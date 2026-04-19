@@ -22,7 +22,7 @@ export default async function LeaderboardPage() {
     take: 50,
   });
 
-  const globalLeaders = topUsers.map((u, i) => ({
+  const globalLeaders = topUsers.map((u: any, i: number) => ({
     id: u.id,
     rank: i + 1,
     name: u.name || 'Anonymous',
@@ -47,7 +47,7 @@ export default async function LeaderboardPage() {
 
       {globalLeaders.length > 0 && (
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-           {globalLeaders.slice(0,3).map((u, i) => (
+           {globalLeaders.slice(0,3).map((u: any, i: number) => (
               <div key={u.id} className={`flex flex-col items-center p-6 rounded-2xl border ${i===0 ? 'bg-indigo-500/5 border-indigo-500/30 sm:scale-105 shadow-[0_0_30px_rgba(99,102,241,0.1)]' : 'bg-white/[0.02] border-white/5'} relative`}>
                 {i === 0 && <div className="absolute -top-3 bg-indigo-500 text-white text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">Rank 1</div>}
                 <div className={`w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold mb-3 ${i===0 ? 'bg-indigo-500 text-white' : i===1 ? 'bg-white/10 text-white/90' : 'bg-white/5 text-white/70'}`}>
@@ -82,7 +82,7 @@ export default async function LeaderboardPage() {
               <div className="col-span-5 sm:col-span-2 text-right">Total XP</div>
             </div>
 
-            {globalLeaders.slice(3).map((u) => (
+            {globalLeaders.slice(3).map((u: any) => (
               <div key={u.id} className={`grid grid-cols-12 gap-4 py-3 items-center rounded-xl px-4 transition-colors group ${u.isUser ? 'bg-indigo-500/10 border border-indigo-500/30' : 'hover:bg-white/[0.03] border border-transparent'}`}>
                 <div className="col-span-2 sm:col-span-1 text-center">
                   <span className={`text-[13px] font-mono ${u.isUser ? 'text-indigo-400 font-bold' : 'text-white/40'}`}>

@@ -134,7 +134,7 @@ export default async function DashboardPage() {
           </CardHeader>
           <CardContent className="space-y-3">
             {dbUser.submissions.length > 0 ? (
-              dbUser.submissions.map((sub, i) => (
+              dbUser.submissions.map((sub: any, i: number) => (
                 <div key={sub.id} className="flex items-center justify-between p-3 rounded-xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] transition-colors group cursor-pointer">
                   <div className="flex items-start gap-4">
                     <div className="mt-1 flex items-center justify-center w-8 h-8 rounded-full bg-white/5 border border-white/10 group-hover:border-indigo-500/30 transition-colors">
