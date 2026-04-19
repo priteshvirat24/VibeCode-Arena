@@ -1,0 +1,75 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String   @id @default(cuid())
+  email         String   @unique
+  name          String?
+  xp            Int      @default(0)
+  streak        Int      @default(0)
+  rank          String   @default("Bronze")
+  createdAt     DateTime @default(now())
+  submissions   Submission[]
+  achievements  Achievement[]
+}
+
+model Challenge {
+  id          String    @id @default(cuid())
+  title       String
+  description String
+  category    String
+  difficulty  String
+  estimateMin Int
+  createdAt   DateTime  @default(now())
+  submissions Submission[]
+}
+
+model Submission {
+  id           String   @id @default(cuid())
+  user         User     @relation(fields: [userId], references: [id])
+  userId       String
+  challenge    Challenge @relation(fields: [challengeId], references: [id])
+  challengeId  String
+  promptText   String
+  code         String
+  outputUrl    String?
+  notes        String?
+  score        Score?
+  createdAt    DateTime @default(now())
+}
+
+model Score {
+  id                 String @id @default(cuid())
+  submission         Submission @relation(fields: [submissionId], references: [id])
+  submissionId       String @unique
+  promptClarity      Int
+  outputQuality      Int
+  speed              Int
+  creativity         Int
+  completion         Int
+  total              Int
+}
+
+model Achievement {
+  id        String   @id @default(cuid())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  key       String
+  createdAt DateTime @default(now())
+}
+
+model Subscription {
+  id         String   @id @default(cuid())
+  user       User     @relation(fields: [userId], references: [id])
+  userId     String   @unique
+  stripeId   String
+  tier       String
+  active     Boolean  @default(true)
+  createdAt  DateTime @default(now())
+}
