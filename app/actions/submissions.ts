@@ -53,7 +53,7 @@ export async function submitChallenge(formData: FormData) {
     // Live Gemini Evaluation
     const systemInstruction = `You are the VibeCode AI Judge. Evalaute the provided prompt and code against the objective. 
     Return a STRICT JSON object representing the score out of 100 for these exact 5 keys: {"promptClarity": number, "outputQuality": number, "creativity": number, "completion": number}. 
-    Objective: "${challenge.objective}". Do not wrap in markdown or any other text.`;
+    Objective: "${challenge.description}". Do not wrap in markdown or any other text.`;
     
     const userMessage = `User's Prompt: ${promptText}\nUser's Output Code: ${code}\nAnalyze this and return the JSON score integers (0-100).`;
 

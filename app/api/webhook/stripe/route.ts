@@ -1,10 +1,10 @@
-import { NextResponse } from 'next/headers';
+import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { prisma } from '@/lib/prisma';
 import { createClient } from '@supabase/supabase-js';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'sk_test_mock', {
-  apiVersion: '2024-06-20',
+  apiVersion: '2026-03-25.dahlia',
 });
 
 // Use admin client since this is a server webhook overriding RLS potentially

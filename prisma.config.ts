@@ -17,11 +17,7 @@ try {
 }
 
 export default defineConfig({
-  earlyAccess: true,
   datasource: {
-    url: directUrl || dbUrl,
-  },
-  migrate: {
     url: directUrl || dbUrl,
   }
 })
