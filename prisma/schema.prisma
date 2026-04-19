@@ -3,8 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
+  provider = "postgresql"
 }
 
 model User {
@@ -17,6 +16,7 @@ model User {
   createdAt     DateTime @default(now())
   submissions   Submission[]
   achievements  Achievement[]
+  subscription  Subscription?
 }
 
 model Challenge {

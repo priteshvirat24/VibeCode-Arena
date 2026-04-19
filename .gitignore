@@ -12,3 +12,5 @@ yarn.lock
 npm-debug.log
 *.log
 .DS_Store
+build
+.vercel
