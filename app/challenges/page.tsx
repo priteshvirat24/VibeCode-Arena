@@ -10,7 +10,7 @@ export default async function ChallengesPage() {
   const challenges = await prisma.challenge.findMany();
 
   // Group by category dynamically
-  const categoriesMap = challenges.reduce((acc: any, c) => {
+  const categoriesMap = challenges.reduce((acc: any, c: any) => {
     if (!acc[c.category]) acc[c.category] = [];
     acc[c.category].push(c);
     return acc;
