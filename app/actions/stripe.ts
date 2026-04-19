@@ -7,7 +7,7 @@ import { createClient } from "@/lib/supabase-server";
 
 // Fallback Stripe Instance (will throw errors if env vars aren't provided when actually executed)
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "sk_test_mock", {
-  apiVersion: "2024-06-20",
+  apiVersion: "2026-03-25.dahlia",
 });
 
 export async function createCheckoutSession() {
